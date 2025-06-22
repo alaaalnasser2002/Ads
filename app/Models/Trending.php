@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Trending extends Model
 {
     use HasFactory;
+    
+    public function ad()
+    {
+        return $this->belongsTo(Ad::class, 'ad_id');
+    }
+    
+
 }

@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offers', function (Blueprint $table) {
+        Schema::create('replies', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); 
-            $table->text('description'); 
-            $table->decimal('discount_percentage', 5, 2); 
-            $table->foreignId('company_id')->constrained('companies');
+            $table->id();
+            $table->foreignId('comment_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->date('start_date'); 
-            $table->date('end_date'); 
+            $table->text('body');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('offers');
+        Schema::dropIfExists('replies');
     }
 };

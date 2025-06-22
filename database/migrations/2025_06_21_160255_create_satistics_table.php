@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trendings', function (Blueprint $table) {
+        Schema::create('satistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('views_count')->default(0);
+            $table->unsignedBigInteger('ad_id');
+            $table->integer('views')->default(0);
+            $table->integer('clicks')->default(0);
+            $table->decimal('earnings', 10, 2)->default(0);
+            $table->float('conversion_rate')->default(0);
             $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
             $table->timestamps();
         });
@@ -24,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trendings');
+        Schema::dropIfExists('satistics');
     }
 };

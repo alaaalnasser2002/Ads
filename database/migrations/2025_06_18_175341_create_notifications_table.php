@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title'); 
             $table->text('message'); 
             $table->boolean('is_read')->default(false);
+            $table->foreignId('user_id')->constrained('users');
+           $table->foreignId('notification_type_id')->constrained('notification_types');
             $table->timestamps();
         });
     }

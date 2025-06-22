@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('interactions', function (Blueprint $table) {
             $table->id();
             $table->string('interaction_type');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('ad_id')->constrained('ads');
             $table->timestamps();
         });
     }

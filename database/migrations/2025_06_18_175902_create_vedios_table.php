@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('file_path'); 
             $table->string('file_type')->nullable();
+            $table->foreignId('ad_id')->constrained('ads');
             $table->timestamps();
         });
     }

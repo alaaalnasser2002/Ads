@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title'); 
             $table->text('description');
+            $table->String('inf_communication');
+            $table->foreignId('ad_type_id')->constrained('ad_types');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('company_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }

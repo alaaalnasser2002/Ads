@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('plan'); 
             $table->date('start_date');
+            $table->string('method');
             $table->date('end_date'); 
             $table->decimal('amount', 8, 2); 
+            $table->foreignId('company_id')->constrained('companies');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

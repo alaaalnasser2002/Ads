@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Vedios extends Model
 {
     use HasFactory;
+    public function ad() {
+        return $this->belongsTo(Ad::class);
+    }
+    
+
 }
