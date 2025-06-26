@@ -12,5 +12,10 @@ class Ratings extends Model
     }
 
     public function user() { return $this->belongsTo(User::class);
-     }
+    }
+    protected $fillable =[
+        'rating',
+        'user_id',
+        'ad_id'
+    ];
 }

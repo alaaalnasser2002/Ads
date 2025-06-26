@@ -15,5 +15,14 @@ class Subscriptions extends Model
 {
     return $this->belongsTo(User::class);
 }
+protected $fillable = [
+        'plan',
+        'start_date',
+        'method',
+        'end_date',
+        'amount',
+        'company_id',
+        'user_id',
+    ];
 
 }

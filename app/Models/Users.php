@@ -70,6 +70,10 @@ public function replies()
     {
         return $this->hasMany(AdReport::class);
     }
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
     
 
 protected $fillable = [

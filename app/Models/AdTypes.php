@@ -14,10 +14,11 @@ class AdTypes extends Model
 
     public function ads()
     {
-        return $this->hasMany(Ad::class, 'ad_type_id');
+        return $this->hasMany(Ad::class);
     }
     public function companies() {
         return $this->belongsToMany(Company::class, 'company_ad_type');}
+        protected $fillable =['type_name'];
 }
 
 

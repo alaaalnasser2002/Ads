@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('satistics', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ad_id');
+            $table->foreignId('ad_id')->constrained()->onDelete('cascade');
             $table->integer('views')->default(0);
             $table->integer('clicks')->default(0);
             $table->decimal('earnings', 10, 2)->default(0);
             $table->float('conversion_rate')->default(0);
-            $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
             $table->timestamps();
         });
     }

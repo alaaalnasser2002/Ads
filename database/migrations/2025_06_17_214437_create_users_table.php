@@ -15,12 +15,12 @@ return new class extends Migration
           $table->id(); 
           $table->string('name'); 
           $table->string('email')->unique(); 
-          $table->strig('phone')->unique();
+          $table->string('phone')->unique();
           $table->timestamp('email_verified_at')->nullable(); 
           $table->string('password'); 
           $table->rememberToken(); 
           $table->string('image_url');
-          $table->foreignId('user_type_id')->constrained('user_types');
+          $table->foreignId('user_type_id')->constrained()->onDelete('cascade');
           $table->boolean('un_blocked')->default(true);
           $table->timestamps(); 
         });

@@ -12,7 +12,7 @@ class Ads extends Model
 
     public function adType()
     {
-        return $this->belongsTo(AdType::class, 'ad_type_id');
+        return $this->belongsTo(AdType::class);
     }
     public function images() {
         return $this->hasMany(Image::class);

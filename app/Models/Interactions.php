@@ -16,5 +16,10 @@ class Interactions extends Model
 
 public function user() {
     return $this->belongsTo(User::class); } 
+    protected $fillable = [
+        'interaction_type',
+        'user_id',
+        'ad_id',
+    ];
 
 }

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('trendings', function (Blueprint $table) {
             $table->id();
             $table->integer('views_count')->default(0);
-            $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
+            $table->foreignId('ad_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

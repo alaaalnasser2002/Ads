@@ -12,5 +12,8 @@ class NotificationTypes extends Model
 {
     return $this->hasMany(Notification::class);
 }
+protected $fillable = [
+    'name'
+    ];
 
 }

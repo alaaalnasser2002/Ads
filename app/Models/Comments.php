@@ -12,12 +12,16 @@ class Comments extends Model
         return $this->belongsTo(Ad::class);
     }
     public function user() {
-         return $this->belongsTo(User::class); } 
-         
-         public function replies()
-         {
-             return $this->hasMany(Reply::class);
-         }
+        return $this->belongsTo(User::class); }  
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+        }
+        protected $fillable = [
+        'comment',
+        'user_id',
+        'ad_id',
+    ];
 }
 
     

@@ -11,20 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('_ad_reports', function (Blueprint $table) {
-            $table->id();
             Schema::create('ad_reports', function (Blueprint $table) {
                 $table->id();
-                $table->unsignedBigInteger('user_id');      // مين بلغ
-                $table->unsignedBigInteger('ad_id');        // الإعلان المبلغ عنه
+                $table->foreignId('user_id')->constrained()->onDelete('cascade');     // مين بلغ
+                $table->foreignId('ad_id')->constrained()->onDelete('cascade');        // الإعلان المبلغ عنه
                 $table->text('reason')->nullable();         // سبب الإبلاغ (اختياري)
                 $table->timestamps();
-                $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-                $table->foreign('ad_id')->references('id')->on('ads')->onDelete('cascade');
             });
-            
-            $table->timestamps();
-        });
     }
 
     /**

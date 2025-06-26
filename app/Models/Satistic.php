@@ -13,6 +13,12 @@ public function ad()
 {
     return $this->belongsTo(\App\Models\Ad::class, 'ad_id');
 }
-
+protected $fillable = [
+        'ad_id',
+        'views',
+        'clicks',
+        'earnings',
+        'conversion_rate',
+    ];
 
 }

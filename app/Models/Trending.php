@@ -13,6 +13,9 @@ class Trending extends Model
     {
         return $this->belongsTo(Ad::class, 'ad_id');
     }
-    
+    protected $fillable=[
+        'views_count',
+        'ad_id'
+    ];
 
 }

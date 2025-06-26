@@ -15,9 +15,12 @@ class Notifications extends Model
     public function notificationType() {
         
         return $this->belongsTo(NotificationType::class); }
-
-
-  
-
+    protected $fillable = [
+        'title',
+        'message',
+        'is_read',
+        'user_id',
+        'notification_type_id',
+    ];    
 }
 

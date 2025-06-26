@@ -11,6 +11,11 @@ class Vedios extends Model
     public function ad() {
         return $this->belongsTo(Ad::class);
     }
+    protected $fillable=[
+        'file_path',
+        'file_type',
+        'ad_id'
+    ];
     
 
 }

@@ -29,6 +29,14 @@ public function followers()
 {
     return $this->belongsToMany(User::class, 'company_followers');
 }
+protected $fillable = [
+        'name',
+        'email',
+        'inf_communication',
+        'logo_url',
+        'website_url',
+        'description',
+    ];
 
 
 }
