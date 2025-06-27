@@ -21,6 +21,7 @@ class AdTypesController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'image_url'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         $adType = AdType::create($request->all());
@@ -35,18 +36,36 @@ class AdTypesController extends Controller
 
     // تحديث نوع إعلان موجود
     public function update(Request $request, AdType $adType)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-        ]);
-
-        $adType->update($request->all());
+    { $request->validate([
+        'name' => 'required|string|max:255',
+        'image_url' =>'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+        if ($request->hasFile('image_url')) {
+            // حذف الصورة القديمة إذا كانت موجودة
+            if ($adType->image_url && file_exists(public_path('uploads/' . $adType->image_url))) {
+                unlink(public_path('uploads/' . $adType->image_url));
+            }
+            // رفع الصورة الجديدة
+            $image = $request->file('image_url');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('uploads'), $imageName);
+            $adType->image_url = $imageName;
+        }
+    
+        $adType->name = $request->name;
+        $adType->save();
+    
         return response()->json($adType, 200);
     }
+    
+    
 
     // حذف نوع إعلان
     public function destroy(AdType $adType)
     {
+        if ($adType->image_url && file_exists(public_path('uploads/' . $adType->image_url))) {
+            unlink(public_path('uploads/' . $adType->image_url));
+        }
         $adType->delete();
         return response()->json(null, 204);
     }

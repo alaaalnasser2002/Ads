@@ -19,7 +19,6 @@ return new class extends Migration
           $table->timestamp('email_verified_at')->nullable(); 
           $table->string('password'); 
           $table->rememberToken(); 
-          $table->string('image_url');
           $table->foreignId('user_type_id')->constrained()->onDelete('cascade');
           $table->boolean('un_blocked')->default(true);
           $table->timestamps(); 

@@ -12,7 +12,7 @@ class AdsController extends Controller
      */
     public function index()
     {
-        //
+        return Ad::with(['images', 'videos'])->get();
     }
 
     /**
@@ -28,15 +28,19 @@ class AdsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        
+    
+        }
+    
+        
+    
 
     /**
      * Display the specified resource.
      */
     public function show(Ads $ads)
     {
-        //
+       
     }
 
     /**
@@ -52,7 +56,7 @@ class AdsController extends Controller
      */
     public function update(Request $request, Ads $ads)
     {
-        //
+       
     }
 
     /**
@@ -60,6 +64,7 @@ class AdsController extends Controller
      */
     public function destroy(Ads $ads)
     {
-        //
+        
     }
+
 }

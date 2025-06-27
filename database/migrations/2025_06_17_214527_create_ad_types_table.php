@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('ad_types', function (Blueprint $table) {
             $table->id();
+            $table->string('image_url');
             $table->string('type_name');
             $table->timestamps();
         });
